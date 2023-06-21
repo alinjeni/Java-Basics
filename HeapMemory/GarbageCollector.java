@@ -23,7 +23,7 @@ public class GarbageCollector {
         System.out.println("Total Memory: " + totalMemory / (1024 * 1024) + "MB");
         System.out.println("Used Memory: " + usedMemory / (1024 * 1024) + "MB");
         System.out.println("Free Memory: " + freeMemory / (1024 * 1024) + "MB");
-        System.out.println("---------------------------");
+        System.out.println("");
     }
 }
 
