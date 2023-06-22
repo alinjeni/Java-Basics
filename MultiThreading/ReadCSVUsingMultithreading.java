@@ -8,6 +8,8 @@ import java.util.concurrent.Executors;
 public class ReadCSVUsingMultithreading{
 
     public static void main(String[] args) {
+
+		long start = System.nanoTime();
         try {
             BufferedReader reader = new BufferedReader(new FileReader("/home/alin/Downloads/organizations-1000.csv"));
 
@@ -19,10 +21,11 @@ public class ReadCSVUsingMultithreading{
             }
             executorService.shutdown();
             reader.close();
-
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        long end = System.nanoTime();
+        System.out.println("----------------------"+ (end-start));
     }
 
     private static class CSVLineProcessor implements Runnable {
@@ -36,7 +39,7 @@ public class ReadCSVUsingMultithreading{
         @Override
         public void run() {
             String[] values = line.split(",");
-            System.out.println(values[0]+"Company ID=" + values[1] + ", Website=" + values[2]
+            System.out.println(Thread.currentThread().getName()+" "+values[0]+" -Company ID=" + values[1] + ", Website=" + values[2]
 					+ ", Country=" + values[3] + ", Description=" + values[4] + ", Founded= " + values[5]
 					+ ", Industry= " + values[6]+", No of values= " + values[7]);
             System.out.println();
